@@ -1,6 +1,32 @@
 Setting up SSL with Let's Encrypt for a Node.js project involves a few more steps compared to using self-signed certificates. Let's Encrypt provides 
 free, trusted SSL certificates. Here's a guide to set up a Node.js project with Let's Encrypt SSL.
 
+```mermaid
+graph TD
+    A[User] -->|Sends HTTPS Request| B[Web Server]
+    B -->|Redirects to| C[Node.js Application]
+    C -->|Manages Certificates| D[Certbot/ACME Client]
+    D -->|Requests/Updates| E[Let's Encrypt]
+    E -->|Issues Certificates| D
+    D -->|Configures Certificates| B
+
+    subgraph Web Server
+        B
+    end
+
+    subgraph Certificate Management
+        D
+        E
+    end
+
+    subgraph Application
+        C
+    end
+
+    style Web Server fill:#f9f,stroke:#333,stroke-width:2px
+    style Certificate Management fill:#ccf,stroke:#333,stroke-width:2px
+    style Application fill:#cff,stroke:#333,stroke-width:2px
+```
 
 Setting up SSL with Let's Encrypt for a Node.js project involves a few more steps compared to using self-signed certificates. Let's Encrypt provides 
 free, trusted SSL certificates. Here's a guide to set up a Node.js project with Let's Encrypt SSL.
